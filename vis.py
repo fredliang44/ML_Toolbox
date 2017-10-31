@@ -22,7 +22,6 @@ class Line(object):
         TOOLS = [BoxSelectTool(), HoverTool(
             tooltips=[
                  ("index", "$index"),
-                 ("(x,y)", "($x, $y)"),
                  ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
                  ]
         )
@@ -57,7 +56,13 @@ class Dot(object):
 
     def show(self):
         # add some renderers
-        TOOLS = [BoxSelectTool(), HoverTool()]
+        TOOLS = [BoxSelectTool(), HoverTool(
+            tooltips=[
+                 ("index", "$index"),
+                 ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
+                 ]
+        )
+        ]
         self.p = figure(x_axis_label=self.x_label, y_axis_label=self.x_label, tools=TOOLS)
         self.p.title.text = self.title
         self.p.title.align = "center"

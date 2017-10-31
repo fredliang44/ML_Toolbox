@@ -15,8 +15,6 @@ class Line(object):
         )
 
     def show(self):
-
-
         # add some renderers
         self.p.line(self.x, self.x, legend="y=x")
         self.p.circle(self.x, self.x, legend="y=x", fill_color="white", size=8)

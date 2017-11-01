@@ -1,7 +1,7 @@
 # ML_Toolbox
 
 ## Visualization
-from [bokeh](https://bokeh.pydata.org)
+From [bokeh](https://bokeh.pydata.org)
 
 ## Example
 
@@ -18,7 +18,7 @@ chart.y_label = "testy"
 chart.show()
 ```
 
-![Line graph](img/line.png)
+![Line graph](img/line.png){:height="50%" width="50%"}
 
 ```python
 x1 = list(range(150))
@@ -32,4 +32,4 @@ chart.label2 = "testy"
 chart.title = "test"
 chart.show()
 ```
-![Dot graph](img/dot.png)
+![Dot graph](img/dot.png){:height="50%" width="50%"}

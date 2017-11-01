@@ -18,7 +18,7 @@ chart.y_label = "testy"
 chart.show()
 ```
 
-![Line graph](img/line.png){:height="50%" width="50%"}
+![Line graph](img/line.png){:width="200px"}
 
 ```python
 x1 = list(range(150))
@@ -32,4 +32,4 @@ chart.label2 = "testy"
 chart.title = "test"
 chart.show()
 ```
-![Dot graph](img/dot.png){:height="50%" width="50%"}
+![Dot graph](img/dot.png){:width="200px"}

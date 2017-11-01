@@ -7,11 +7,7 @@ From [bokeh](https://bokeh.pydata.org)
 
 ### Visualization
 
-<style>
-img{
-    max-width:  660px;
-}
-</style>
+
 
 ```python
 import vis as v

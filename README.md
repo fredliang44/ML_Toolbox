@@ -1,6 +1,7 @@
 # ML_Toolbox
 
-[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com)
+![](https://img.shields.io/badge/language-python-5FA8E7.svg?style=flat-square)
+
 
 ## Visualization
 From [bokeh](https://bokeh.pydata.org)

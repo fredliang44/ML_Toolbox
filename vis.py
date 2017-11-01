@@ -1,6 +1,6 @@
 from bokeh.plotting import figure, show
 from bokeh.io import output_notebook
-from bokeh.models import HoverTool, BoxSelectTool
+from bokeh.models import HoverTool, BoxSelectTool, BoxZoomTool, ResetTool, LassoSelectTool, SaveTool
 
 
 class Line(object):
@@ -19,7 +19,7 @@ class Line(object):
 
     def show(self):
         # add some renderers
-        TOOLS = [BoxSelectTool(), HoverTool(
+        TOOLS = [BoxZoomTool(), ResetTool(), BoxSelectTool(), LassoSelectTool(), SaveTool(), HoverTool(
             tooltips=[
                  ("index", "$index"),
                  ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
@@ -30,7 +30,7 @@ class Line(object):
         self.p.title.text = self.title
         self.p.title.text_font_size = "25px"
         self.p.line(self.x, self.x, legend=self.label1)
-        self.p.circle(self.x, self.x, legend=self.label1, fill_color="white", size=8)
+        self.p.circle(self.x, self.x, legend=self.label1, fill_color="white", size=6)
         self.p.line(self.x, self.y, legend=self.label2, line_color="red")
         self.p.circle(self.x, self.y, legend=self.label2,
                       fill_color="red", line_color="red", size=6)
@@ -56,7 +56,7 @@ class Dot(object):
 
     def show(self):
         # add some renderers
-        TOOLS = [BoxSelectTool(), HoverTool(
+        TOOLS = [BoxZoomTool(), ResetTool(), BoxSelectTool(), LassoSelectTool(), SaveTool(), HoverTool(
             tooltips=[
                  ("index", "$index"),
                  ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),

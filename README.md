@@ -1,6 +1,7 @@
 # ML_Toolbox
 
 ![](https://img.shields.io/badge/language-python3.6-5FA8E7.svg?style=flat-square)
+[![](https://img.shields.io/badge/codebeat-A-brightgreen.svg?style=flat-square)](https://codebeat.co/projects/github-com-fredliang44-ml_toolbox-master)
 
 
 ## Visualization

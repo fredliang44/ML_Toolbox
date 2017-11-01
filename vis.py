@@ -22,9 +22,7 @@ class Line(object):
             tooltips=[
                  ("index", "$index"),
                  ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
-                 ]
-        )
-        ]
+                 ])]
         self.p = figure(x_axis_label=self.x_label, y_axis_label=self.y_label, tools=TOOLS)
         self.p.title.text = self.title
         self.p.title.text_font_size = "25px"

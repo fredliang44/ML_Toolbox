@@ -1,5 +1,7 @@
 # ML_Toolbox
 
+[![forthebadge](http://forthebadge.com/images/badges/made-with-python.svg)](http://forthebadge.com)
+
 ## Visualization
 From [bokeh](https://bokeh.pydata.org)
 
@@ -20,7 +22,7 @@ chart.y_label = "testy"
 chart.show()
 ```
 
-![Line graph](img/line.png)
+![Line graph](https://img.l-do.cn/line.png-github)
 
 ```python
 x1 = list(range(150))
@@ -34,4 +36,4 @@ chart.label2 = "testy"
 chart.title = "test"
 chart.show()
 ```
-![Dot graph](img/dot.png)
+![Dot graph](https://img.l-do.cn/dot.png-github)

@@ -7,6 +7,12 @@ From [bokeh](https://bokeh.pydata.org)
 
 ### Visualization
 
+<style>
+img{
+    max-width:  660px;
+}
+</style>
+
 ```python
 import vis as v
 x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
@@ -18,7 +24,7 @@ chart.y_label = "testy"
 chart.show()
 ```
 
-![Line graph](img/line.png){:width="200px"}
+![Line graph](img/line.png)
 
 ```python
 x1 = list(range(150))
@@ -32,4 +38,4 @@ chart.label2 = "testy"
 chart.title = "test"
 chart.show()
 ```
-![Dot graph](img/dot.png){:width="200px"}
+![Dot graph](img/dot.png)

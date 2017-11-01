@@ -1,6 +1,6 @@
 # ML_Toolbox
 
-![](https://img.shields.io/badge/language-python-5FA8E7.svg?style=flat-square)
+![](https://img.shields.io/badge/language-python3.6-5FA8E7.svg?style=flat-square)
 
 
 ## Visualization

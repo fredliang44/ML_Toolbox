@@ -6,16 +6,15 @@ from bokeh.models import HoverTool, BoxSelectTool, BoxZoomTool, ResetTool, Lasso
 class Line(object):
 
     # setup plot
-    def __init__(self, x=None, y=None, label1=None, label2=None, x_label="x",
-                 y_label="y", title=None):
+    def __init__(self, x=None, y=None):
         # create a new plot
-        self.title = title
+        self.title = None
         self.x = x
         self.y = y
-        self.label1 = label1
-        self.label2 = label2
-        self.x_label = x_label
-        self.y_label = y_label
+        self.label1 = None
+        self.label2 = None
+        self.x_label = "x_label"
+        self.y_label = "y_label"
 
     def show(self):
         # add some renderers
@@ -41,18 +40,17 @@ class Line(object):
 class Dot(object):
 
     # setup plot
-    def __init__(self, x1=None, y1=None, x2=None, y2=None, label1=None,
-                 label2=None, x_label="x", y_label="y", title=None):
+    def __init__(self, x1=None, y1=None, x2=None, y2=None):
         # create a new plot
-        self.title = title
+        self.title = None
         self.x1 = x1
         self.y1 = y1
         self.x2 = x2
         self.y2 = y2
-        self.x_label = x_label
-        self.y_label = y_label
-        self.label1 = label1
-        self.label2 = label2
+        self.x_label = "x_label"
+        self.y_label = "y_label"
+        self.label1 = None
+        self.label2 = None
 
     def show(self):
         # add some renderers

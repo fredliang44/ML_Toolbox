@@ -12,6 +12,11 @@ from sklearn.linear_model import LinearRegression, BayesianRidge, LogisticRegres
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.svm import SVC, SVR
 
+""" Visualize"""
+import numpy as np
+import matplotlib.pyplot as plt
+import pylab as pl
+
 
 class Process(object):
     """docstring for Process."""
@@ -51,6 +56,8 @@ class Model(object):
         self.grid_search = False
         self.x = None
         self.y = None
+        self.x_label = "x_label"
+        self.y_label = "y_label"
 
     def fit(self, x, y):
         self.x = x
@@ -63,3 +70,37 @@ class Model(object):
     def auc(self, x, y_true):
         y_score = self.predict_prob(x)
         return roc_auc_score(y_true, y_score)
+
+    def show(self, X_test, y_test):
+
+        x_min = 0
+        x_max = 1
+        y_min = 0
+        y_max = 1
+
+        # Plot the decision boundary. For that, we will assign a color to each
+        # point in the mesh [x_min, m_max]x[y_min, y_max].
+        h = .01  # step size in the mesh
+        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h))
+        Z = self.clf.predict(np.c_[xx.ravel(), yy.ravel()])
+
+        # Put the result into a color plot
+        Z = Z.reshape(xx.shape)
+        plt.xlim(xx.min(), xx.max())
+        plt.ylim(yy.min(), yy.max())
+
+        plt.pcolormesh(xx, yy, Z, cmap=pl.cm.seismic)
+
+        # Plot also the test points
+        grade_sig = [X_test[ii][0] for ii in range(0, len(X_test)) if y_test[ii] == 0]
+        bumpy_sig = [X_test[ii][1] for ii in range(0, len(X_test)) if y_test[ii] == 0]
+        grade_bkg = [X_test[ii][0] for ii in range(0, len(X_test)) if y_test[ii] == 1]
+        bumpy_bkg = [X_test[ii][1] for ii in range(0, len(X_test)) if y_test[ii] == 1]
+
+        plt.scatter(grade_sig, bumpy_sig, color="b", label="cust")
+        plt.scatter(grade_bkg, bumpy_bkg, color="r", label="main")
+        plt.legend()
+        plt.xlabel(self.x_label)
+        plt.ylabel(self.y_label)
+
+        plt.show()

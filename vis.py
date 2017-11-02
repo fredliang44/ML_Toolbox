@@ -15,15 +15,14 @@ class Line(object):
         self.label2 = None
         self.x_label = "x_label"
         self.y_label = "y_label"
+        self.tools = [BoxZoomTool(), ResetTool(), BoxSelectTool(), LassoSelectTool(), SaveTool(), HoverTool(
+            tooltips=[
+                ("index", "$index"),
+                ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
+            ])]
 
     def show(self):
-        # add some renderers
-        TOOLS = [BoxZoomTool(), ResetTool(), BoxSelectTool(), LassoSelectTool(), SaveTool(), HoverTool(
-            tooltips=[
-                 ("index", "$index"),
-                 ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
-                 ])]
-        self.p = figure(x_axis_label=self.x_label, y_axis_label=self.y_label, tools=TOOLS)
+        self.p = figure(x_axis_label=self.x_label, y_axis_label=self.y_label, tools=self.tools)
         self.p.title.text = self.title
         self.p.title.text_font_size = "25px"
         self.p.line(self.x, self.x, legend=self.label1)
@@ -51,15 +50,7 @@ class Dot(object):
         self.label2 = None
 
     def show(self):
-        # add some renderers
-        TOOLS = [BoxZoomTool(), ResetTool(), BoxSelectTool(), LassoSelectTool(), SaveTool(), HoverTool(
-            tooltips=[
-                 ("index", "$index"),
-                 ("(" + self.x_label + "," + self.y_label + "y)", "($x, $y)"),
-                 ]
-        )
-        ]
-        self.p = figure(x_axis_label=self.x_label, y_axis_label=self.y_label, tools=TOOLS)
+        self.p = figure(x_axis_label=self.x_label, y_axis_label=self.y_label, tools=self.tools)
         self.p.title.text = self.title
         self.p.title.align = "center"
         self.p.title.text_font_size = "25px"

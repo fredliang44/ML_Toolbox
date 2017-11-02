@@ -4,11 +4,11 @@ from sklearn import preprocessing
 from sklearn.preprocessing import Imputer
 
 """Traning"""
-from neighbors import KNeighborsClassifier, neighbors.KNeighborsRegressor
-from sklearn.ensemble import AdaBoostClassifier, ensemble.AdaBoostRegressor
+from neighbors import KNeighborsClassifier, KNeighborsRegressor
+from sklearn.ensemble import AdaBoostClassifier, AdaBoostRegressor
 from sklearn.neural_network import MLPClassifier, MLPRegressor
 from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor
-from sklearn.linear_model import LinearRegression, BayesianRidge, LogisticRegression
+from sklearn.linear_model import LinearRegression, BayesianRidge, LogisticRegression, SGDClassifier
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.svm import SVC, SVR
 
@@ -16,6 +16,27 @@ from sklearn.svm import SVC, SVR
 import numpy as np
 import matplotlib.pyplot as plt
 import pylab as pl
+
+""" Classifiers """
+classifiers = [
+    ("GaussianNB", GaussianNB())
+    ("MultinomialNB", MultinomialNB())
+    ("LogisticRegression", LogisticRegression())
+    ("SVC", SVC())
+    ("SVR", SVR())
+    ("SGD", SGDClassifier()),
+    ("ASGD", SGDClassifier(average=True)),
+    ("Perceptron", Perceptron()),
+    ("Passive-Aggressive I", PassiveAggressiveClassifier(loss='hinge',
+                                                         C=1.0)),
+    ("Passive-Aggressive II", PassiveAggressiveClassifier(loss='squared_hinge',
+                                                          C=1.0)),
+    ("KNeighbors", KNeighborsClassifier())
+    ("MLP", MLPClassifier())
+    ("DecisionTree", DecisionTreeClassifier())
+    ("AdaBoost", AdaBoostClassifier())
+
+]
 
 
 class Process(object):
@@ -41,6 +62,8 @@ class Process(object):
         scaler = preprocessing.MinMaxScaler().fit(self.data)
         return scaler.transform(self.data)
 
+    """ Fill NaN in datasets """
+
     def fillnan(self):
         imp = Imputer(missing_values='NaN', strategy='mean')
         imp.fit(self.data)
@@ -50,26 +73,61 @@ class Process(object):
 class Model(object):
     """docstring for Process."""
 
-    def __init__(self, clf=GaussianNB):
+    def __init__(self, clf=GaussianNB()):
         self.clf = clf
-        self.scale = False
-        self.grid_search = False
-        self.x = None
-        self.y = None
+        self.scale, self.grid_search self.mod_search = False, False, False
+        self.X, self.y = None, None
         self.x_label = "x_label"
         self.y_label = "y_label"
 
-    def fit(self, x, y):
-        self.x = x
+    """ Fit model """
+
+    def fit(self, X, y):
+        self.X = X
         self.y = y
+        if self.mod_search:
+            for name, clf in classifiers:
+                print("training %s" % name)
+                rng = np.random.RandomState(42)
+                yy = []
+                for i in heldout:
+                    yy_ = []
+                    for r in range(rounds):
+                        X_train, X_test, y_train, y_test = \
+                            train_test_split(self.X, selfy, test_size=i, random_state=rng)
+                        clf.fit(X_train, y_train)
+                        y_pred = clf.predict(X_test)
+                        yy_.append(1 - np.mean(y_pred == y_test))
+                    yy.append(np.mean(yy_))
+                plt.plot(xx, yy, label=name)
+            plt.legend(loc="upper right")
+            plt.xlabel("Proportion train")
+            plt.ylabel("Test Error Rate")
+            plt.show()
+        elif self.grid_search:
+            self.grid.fit(X, y)
+        else:
+            self.clf.fit(X, y)
+
+    """ Predict """
+
+    def predict(self, x):
+        x_t = x
+        return self.clf.predict(x_t)[:, 1]
+
+    """ Predict Prob """
 
     def predict_prob(self, x):
         x_t = x
         return self.clf.predict_proba(x_t)[:, 1]
 
+    """ Get auc of model """
+
     def auc(self, x, y_true):
         y_score = self.predict_prob(x)
         return roc_auc_score(y_true, y_score)
+
+    """ Show classifier graph """
 
     def show(self, X_test, y_test):
 

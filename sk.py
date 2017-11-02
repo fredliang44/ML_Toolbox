@@ -127,6 +127,10 @@ class Model(object):
         y_score = self.predict_prob(x)
         return roc_auc_score(y_true, y_score)
 
+    """ Get f1 of model """
+
+    def f1(self, x):
+        pass
     """ Show classifier graph """
 
     def show(self, X_test, y_test):

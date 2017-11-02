@@ -12,7 +12,7 @@ from sklearn.linear_model import LinearRegression, BayesianRidge, LogisticRegres
 from sklearn.naive_bayes import GaussianNB, MultinomialNB
 from sklearn.svm import SVC, SVR
 
-""" Visualize"""
+""" Visualize """
 import numpy as np
 import matplotlib.pyplot as plt
 import pylab as pl
@@ -40,7 +40,8 @@ classifiers = [
 
 
 class Process(object):
-    """docstring for Process."""
+
+    """ Initialize Process """
 
     def __init__(self):
         self.data = None
@@ -49,7 +50,7 @@ class Process(object):
         self.random_state = 0.4
         self.test_size = 0.2
 
-    """ Split Dataset"""
+    """ Split Dataset """
 
     def split(self):
 
@@ -71,7 +72,8 @@ class Process(object):
 
 
 class Model(object):
-    """docstring for Process."""
+
+    """ Initialize Model """
 
     def __init__(self, clf=GaussianNB()):
         self.clf = clf

@@ -7,6 +7,12 @@
 ## Visualization
 From [bokeh](https://bokeh.pydata.org)
 
+## Install
+
+``` bash
+pip3 install fred_toolbox
+```
+
 ## Example
 
 ### Visualization
@@ -14,7 +20,8 @@ From [bokeh](https://bokeh.pydata.org)
 
 
 ```python
-import vis as v
+from fred_toolbox import vis as v
+
 x = [0.1, 0.5, 1.0, 1.5, 2.0, 2.5, 3.0]
 y  = [i**4 for i in x]
 
@@ -27,6 +34,8 @@ chart.show()
 ![Line graph](https://img.l-do.cn/line.png-github)
 
 ```python
+from fred_toolbox import vis as v
+
 x1 = list(range(150))
 y1 = [i**2 for i in x]
 x2 = list(range(150))

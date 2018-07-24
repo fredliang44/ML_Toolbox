@@ -77,7 +77,7 @@ class Model(object):
 
     def __init__(self, clf=GaussianNB()):
         self.clf = clf
-        self.scale, self.grid_search self.mod_search = False, False, False
+        self.scale, self.grid_search, self.mod_search = False, False, False
         self.X, self.y = None, None
         self.x_label = "x_label"
         self.y_label = "y_label"
